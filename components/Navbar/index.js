@@ -20,6 +20,11 @@ const Navbar = () => (
         Home
       </ChakraLink>
     </NextLink>
+    <NextLink href="/blog" passHref>
+      <ChakraLink mr={{ md: 5 }} _hover={{ color: "blue.500" }}>
+        Blog
+      </ChakraLink>
+    </NextLink>
     <NextLink href="/projects" passHref>
       <ChakraLink mr={{ md: 5 }} _hover={{ color: "blue.500" }}>
         Projects
