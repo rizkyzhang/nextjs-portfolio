@@ -2,12 +2,20 @@ import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import style from "../../styles/markdown-styles.module.css";
 import { fetchAPI } from "../../utils/api";
+import markdownComponents from "../../utils/markdownComponents";
+import { Heading } from "@chakra-ui/react";
 
 export default function Article({ article }) {
   return (
-    <div>
-      <ReactMarkdown>{article.body}</ReactMarkdown>
-    </div>
+    <>
+      <Heading as="h1">{article.title}</Heading>
+      <ReactMarkdown
+        className={style.reactMarkdown}
+        components={markdownComponents}
+      >
+        {article.body}
+      </ReactMarkdown>
+    </>
   );
 }
 
