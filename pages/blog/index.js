@@ -35,7 +35,13 @@ export default function Blog({ articles }) {
             );
 
             return (
-              <Flex key={id} align="center" p={3} bg="blackAlpha.300">
+              <Flex
+                direction={{ base: "column", sm: "row" }}
+                key={id}
+                align={{ base: "flex-start", sm: "center" }}
+                p={3}
+                bg="blackAlpha.300"
+              >
                 <NextLink href={`/blog/${slug}`} passHref>
                   <ChakraLink>{title}</ChakraLink>
                 </NextLink>

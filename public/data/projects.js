@@ -45,6 +45,14 @@ const projects = [
     githubLink: "https://github.com/rizkyzhang/football-radar",
     isScrapingProject: false,
   },
+  {
+    title: "Chakra UI Gallery",
+    description: "A gallery to showcase UI projects I created using Chakra UI.",
+    image: "/images/chakra-ui-gallery.png",
+    projectLink: "https://chakrauigallery.netlify.app/",
+    githubLink: "https://github.com/rizkyzhang/chakra-ui-gallery",
+    isScrapingProject: false,
+  },
 ];
 
 export default projects;
