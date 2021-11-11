@@ -5,10 +5,14 @@ import NextLink from "next/link";
 const Navbar = () => (
   <Flex
     as="nav"
+    position="sticky"
+    top={0}
+    left={0}
+    zIndex="sticky"
     alignItems="center"
     justifyContent={{ base: "space-around", md: "flex-end" }}
     p={5}
-    bg="blackAlpha.300"
+    bg="#22252C"
   >
     <NextLink href="/" passHref>
       <ChakraLink mr={{ md: 5 }} _hover={{ color: "blue.500" }}>
