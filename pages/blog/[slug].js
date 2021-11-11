@@ -3,6 +3,8 @@ import Head from "next/head";
 
 import { Heading } from "@chakra-ui/react";
 
+import Comments from "../../components/Comments";
+
 import markdownComponents from "../../utils/markdownComponents";
 import { fetchAPI } from "../../utils/api";
 import style from "../../styles/markdown-styles.module.css";
@@ -17,6 +19,7 @@ export default function Article({ article }) {
       >
         {article.body}
       </ReactMarkdown>
+      <Comments issueTerm={article.slug} />
     </>
   );
 }
