@@ -17,7 +17,7 @@ const markdownComponents = {
   ),
   p: ({ children }) => <Text my={5}>{children}</Text>,
   a: ({ children, href }) => (
-    <Link textDecoration="underline" href={href}>
+    <Link href={href} color="blue.500" textDecoration="underline">
       {children}
     </Link>
   ),

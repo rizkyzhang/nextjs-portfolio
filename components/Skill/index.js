@@ -7,7 +7,7 @@ export const Skill = ({ skills, title }) => {
         as="h3"
         w="max-content"
         mb={3}
-        // bgGradient="linear(to right, #f7b733, #fc4a1a)"
+        bgGradient="linear(to right, #f7b733, #fc4a1a)"
         bgRepeat="no-repeat"
         bgSize="100% 0.2em"
         bgPos="0 88%"
@@ -20,7 +20,7 @@ export const Skill = ({ skills, title }) => {
       <Wrap spacing={2}>
         {skills.map((skill, i) => (
           <WrapItem key={i}>
-            <Image src={skill}></Image>
+            <Image src={skill} alt="Skill logo"></Image>
           </WrapItem>
         ))}
       </Wrap>

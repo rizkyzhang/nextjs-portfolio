@@ -1,9 +1,11 @@
-import Head from "next/head";
 import ReactMarkdown from "react-markdown";
-import style from "../../styles/markdown-styles.module.css";
-import { fetchAPI } from "../../utils/api";
-import markdownComponents from "../../utils/markdownComponents";
+import Head from "next/head";
+
 import { Heading } from "@chakra-ui/react";
+
+import markdownComponents from "../../utils/markdownComponents";
+import { fetchAPI } from "../../utils/api";
+import style from "../../styles/markdown-styles.module.css";
 
 export default function Article({ article }) {
   return (
@@ -30,15 +32,11 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 export async function getStaticPaths() {
-  // Call an external API endpoint to get posts
   const articles = await fetchAPI(`/articles`);
 
-  // Get the paths we want to pre-render based on posts
   const paths = articles.map(({ slug }) => ({
     params: { slug },
   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
 }
