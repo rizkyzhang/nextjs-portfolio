@@ -1,4 +1,4 @@
-import { Image, Stack, Text, chakra } from "@chakra-ui/react";
+import { Image, Stack, Text, Wrap, chakra } from "@chakra-ui/react";
 import { footerStyle, designedStyle, codedStyle } from "./style";
 
 const Footer = () => {
@@ -8,10 +8,19 @@ const Footer = () => {
         <chakra.span {...designedStyle}>designed</chakra.span> &{" "}
         <chakra.span {...codedStyle}>&lt;/coded&gt;</chakra.span> by Rizky
       </Text>
-      <Text>
-        Built with{" "}
+      <Wrap justify="center">
         <Image
           src="https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white"
+          alt="Chakra UI logo"
+          display="inline-block"
+        />
+        <Image
+          src="https://img.shields.io/badge/strapi-%232E7EEA.svg?style=for-the-badge&logo=strapi&logoColor=white"
+          alt="Chakra UI logo"
+          display="inline-block"
+        />
+        <Image
+          src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"
           alt="Chakra UI logo"
           display="inline-block"
         />
@@ -20,7 +29,7 @@ const Footer = () => {
           alt="Next.js logo"
           display="inline-block"
         />
-      </Text>
+      </Wrap>
       <Text>2021 &copy; programmerHood</Text>
     </Stack>
   );

@@ -16,7 +16,7 @@ const Projects = () => (
       <Stack spacing={5}>
         <Skill title="# Front-End" skills={frontEnd} />
         <Skill title="# Back-End" skills={backEnd} />
-        <Skill title="# Tools" skills={tools} />
+        <Skill title="# Tools & Other Languages" skills={tools} />
       </Stack>
     </Box>
 

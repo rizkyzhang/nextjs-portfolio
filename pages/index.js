@@ -79,7 +79,7 @@ const Home = () => (
       <Button
         leftIcon={<DownloadIcon />}
         as="a"
-        href="#"
+        href="https://drive.google.com/file/d/18-vR3mdVlRLBywoIf-1BnG8YjgLuhf6C/view?usp=sharing"
         size="lg"
         bgColor="blue.500"
         color="white"

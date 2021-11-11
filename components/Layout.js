@@ -1,6 +1,7 @@
 import { Container } from "@chakra-ui/react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import ScrollToTop from "./ScrollToTop";
 
 const Layout = ({ children }) => {
   return (
@@ -10,13 +11,14 @@ const Layout = ({ children }) => {
       p={0}
       display="flex"
       flexDirection="column"
-      bg="#282828"
+      bg="#282C34"
       fontFamily="Poppins"
       color="white"
     >
       <Navbar></Navbar>
-      <Container maxW="container.lg" p={10}>
+      <Container maxW="container.lg" px={5} py={10}>
         {children}
+        <ScrollToTop />
       </Container>
       <Footer></Footer>
     </Container>
