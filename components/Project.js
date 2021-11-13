@@ -12,7 +12,7 @@ import {
 import { ViewIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
 
-export const Project = ({
+const Project = ({
   title,
   description,
   image,
@@ -89,3 +89,5 @@ export const Project = ({
     </Flex>
   );
 };
+
+export default Project;

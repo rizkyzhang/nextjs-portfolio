@@ -13,7 +13,7 @@ import {
 import SEO from "../../components/SEO";
 import { fetchAPI } from "../../utils/api";
 
-export default function Blog({ articles }) {
+const Blog = ({ articles }) => {
   return (
     <>
       <SEO title="Blog" path="blog" />
@@ -54,7 +54,7 @@ export default function Blog({ articles }) {
       </Stack>
     </>
   );
-}
+};
 export const getStaticProps = async () => {
   const articles = await fetchAPI(`/articles`);
 
@@ -67,3 +67,5 @@ export const getStaticProps = async () => {
     revalidate: 1,
   };
 };
+
+export default Blog;

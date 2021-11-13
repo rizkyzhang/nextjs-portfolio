@@ -20,6 +20,7 @@ import {
 import { SiCodewars } from "react-icons/si";
 
 import SEO from "../components/SEO";
+import { fetchAPI } from "../utils/api";
 
 const links = [
   ["https://www.linkedin.com/in/rizkyzhang/", <FaLinkedin />],
@@ -30,7 +31,7 @@ const links = [
   ["https://www.hackerrank.com/rizkyzhangdev", <FaHackerrank />],
 ];
 
-const Home = () => (
+const Home = ({ cv }) => (
   <>
     <SEO title="Home" path="" />
     <Stack spacing={8} alignItems="flex-start">
@@ -80,7 +81,7 @@ const Home = () => (
       <Button
         leftIcon={<DownloadIcon />}
         as="a"
-        href="https://drive.google.com/file/d/18-vR3mdVlRLBywoIf-1BnG8YjgLuhf6C/view?usp=sharing"
+        href={cv}
         target="_blank"
         size="lg"
         bgColor="blue.500"
@@ -112,5 +113,16 @@ const Home = () => (
     </Stack>
   </>
 );
+
+export const getStaticProps = async () => {
+  const { cv } = await fetchAPI(`/portfolio-data`);
+
+  return {
+    props: {
+      cv,
+    },
+    revalidate: 1,
+  };
+};
 
 export default Home;
