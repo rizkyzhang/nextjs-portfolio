@@ -1,4 +1,3 @@
-import Head from "next/head";
 import NextLink from "next/link";
 
 import {
@@ -11,14 +10,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+import SEO from "../../components/SEO";
 import { fetchAPI } from "../../utils/api";
 
-export default function Blog({ articles }) {
+const Blog = ({ articles }) => {
   return (
     <>
-      <Head>
-        <title>Blog</title>
-      </Head>
+      <SEO title="Blog" path="blog" />
       <Stack>
         <Heading as="h2" color="blue.500">
           2021
@@ -56,7 +54,7 @@ export default function Blog({ articles }) {
       </Stack>
     </>
   );
-}
+};
 export const getStaticProps = async () => {
   const articles = await fetchAPI(`/articles`);
 
@@ -69,3 +67,5 @@ export const getStaticProps = async () => {
     revalidate: 1,
   };
 };
+
+export default Blog;

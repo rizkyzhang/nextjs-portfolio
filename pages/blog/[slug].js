@@ -1,25 +1,35 @@
 import ReactMarkdown from "react-markdown";
-import Head from "next/head";
 
 import { Heading } from "@chakra-ui/react";
 
 import Comments from "../../components/Comments";
+import SEO from "../../components/SEO";
 
 import markdownComponents from "../../utils/markdownComponents";
 import { fetchAPI } from "../../utils/api";
 import style from "../../styles/markdown-styles.module.css";
 
 export default function Article({ article }) {
+  const { title, body, slug, published_at, updated_at } = article;
+
   return (
     <>
-      <Heading as="h1">{article.title}</Heading>
+      <SEO
+        title={title}
+        description={body.slice(0, 150) + "..."}
+        path={`blog/${slug}`}
+        publishedAt={published_at}
+        updatedAt={updated_at}
+        isArticle
+      />
+      <Heading as="h1">{title}</Heading>
       <ReactMarkdown
         className={style.reactMarkdown}
         components={markdownComponents}
       >
-        {article.body}
+        {body}
       </ReactMarkdown>
-      <Comments issueTerm={article.slug} />
+      <Comments issueTerm={slug} />
     </>
   );
 }

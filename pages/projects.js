@@ -1,22 +1,23 @@
 /* eslint-disable react/jsx-key */
 import { Box, Heading, SimpleGrid, Stack } from "@chakra-ui/react";
 
-import projects from "../public/data/projects";
-import { frontEnd, backEnd, tools } from "../public/data/skills";
-import { Skill } from "../components/Skill";
-import { Project } from "../components/Project";
+import Skill from "../components/Skill";
+import Project from "../components/Project";
+import SEO from "../components/SEO";
+import { fetchAPI } from "../utils/api";
 
-const Projects = () => (
+const Projects = ({ projects, skill }) => (
   <>
+    <SEO title="Projects" path="projects" />
     <Box mb={20}>
       <Heading mb={7} fontSize="3xl">
         Skills
       </Heading>
 
       <Stack spacing={5}>
-        <Skill title="# Front-End" skills={frontEnd} />
-        <Skill title="# Back-End" skills={backEnd} />
-        <Skill title="# Tools & Other Languages" skills={tools} />
+        <Skill title="# Front-End" skills={skill.frontEnd} />
+        <Skill title="# Back-End" skills={skill.backEnd} />
+        <Skill title="# Tools & Other Languages" skills={skill.tools} />
       </Stack>
     </Box>
 
@@ -32,5 +33,17 @@ const Projects = () => (
     </Box>
   </>
 );
+
+export const getStaticProps = async () => {
+  const { projects, skill } = await fetchAPI(`/portfolio-data`);
+
+  return {
+    props: {
+      projects,
+      skill,
+    },
+    revalidate: 1,
+  };
+};
 
 export default Projects;

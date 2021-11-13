@@ -1,6 +1,6 @@
 import { Box, Heading, Image, Wrap, WrapItem } from "@chakra-ui/react";
 
-export const Skill = ({ skills, title }) => {
+const Skill = ({ skills, title }) => {
   return (
     <Box>
       <Heading
@@ -27,3 +27,5 @@ export const Skill = ({ skills, title }) => {
     </Box>
   );
 };
+
+export default Skill;
