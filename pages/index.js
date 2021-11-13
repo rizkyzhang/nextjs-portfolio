@@ -1,6 +1,4 @@
 /* eslint-disable react/jsx-key */
-import Head from "next/head";
-
 import {
   Button,
   chakra,
@@ -21,6 +19,8 @@ import {
 } from "react-icons/fa";
 import { SiCodewars } from "react-icons/si";
 
+import SEO from "../components/SEO";
+
 const links = [
   ["https://www.linkedin.com/in/rizkyzhang/", <FaLinkedin />],
   ["https://t.me/rizkyzhang", <FaTelegram />],
@@ -32,6 +32,7 @@ const links = [
 
 const Home = () => (
   <>
+    <SEO title="Home" path="" />
     <Stack spacing={8} alignItems="flex-start">
       <Heading as="h1" fontSize="4xl">
         Hi, I am Rizky.
@@ -80,6 +81,7 @@ const Home = () => (
         leftIcon={<DownloadIcon />}
         as="a"
         href="https://drive.google.com/file/d/18-vR3mdVlRLBywoIf-1BnG8YjgLuhf6C/view?usp=sharing"
+        target="_blank"
         size="lg"
         bgColor="blue.500"
         color="white"
@@ -96,6 +98,7 @@ const Home = () => (
           <IconButton
             key={i}
             as="a"
+            target="_blank"
             href={link[0]}
             icon={link[1]}
             fontSize="2xl"

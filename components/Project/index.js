@@ -37,6 +37,7 @@ export const Project = ({
         <Button
           as="a"
           href={projectLink}
+          target="_blank"
           w="full"
           leftIcon={<ViewIcon />}
           bgColor="blue.500"
@@ -54,6 +55,7 @@ export const Project = ({
           <Button
             as="a"
             href={projectLink}
+            target="_blank"
             w="full"
             leftIcon={<ViewIcon />}
             bgColor="blue.500"
@@ -69,6 +71,7 @@ export const Project = ({
           <Button
             as="a"
             href={githubLink}
+            target="_blank"
             w="full"
             leftIcon={<FaGithub />}
             bgColor="blue.500"

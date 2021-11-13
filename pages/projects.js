@@ -6,8 +6,11 @@ import { frontEnd, backEnd, tools } from "../public/data/skills";
 import { Skill } from "../components/Skill";
 import { Project } from "../components/Project";
 
+import SEO from "../components/SEO";
+
 const Projects = () => (
   <>
+    <SEO title="Projects" path="projects" />
     <Box mb={20}>
       <Heading mb={7} fontSize="3xl">
         Skills

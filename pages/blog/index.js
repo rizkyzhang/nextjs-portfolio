@@ -1,4 +1,3 @@
-import Head from "next/head";
 import NextLink from "next/link";
 
 import {
@@ -11,14 +10,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+import SEO from "../../components/SEO";
 import { fetchAPI } from "../../utils/api";
 
 export default function Blog({ articles }) {
   return (
     <>
-      <Head>
-        <title>Blog</title>
-      </Head>
+      <SEO title="Blog" path="blog" />
       <Stack>
         <Heading as="h2" color="blue.500">
           2021
