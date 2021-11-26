@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import {
   Button,
+  Box,
   chakra,
   Heading,
   IconButton,
@@ -19,6 +20,8 @@ import {
 } from "react-icons/fa";
 import { SiCodewars } from "react-icons/si";
 
+import parse from "html-react-parser";
+
 import SEO from "../components/SEO";
 import { fetchAPI } from "../utils/api";
 
@@ -31,53 +34,25 @@ const links = [
   ["https://www.hackerrank.com/rizkyzhangdev", <FaHackerrank />],
 ];
 
-const Home = ({ cv }) => (
+const Home = ({ cv, home }) => (
   <>
     <SEO title="Home" path="" />
-    <Stack spacing={8} alignItems="flex-start">
-      <Heading as="h1" fontSize="4xl">
-        Hi, I am Rizky.
-      </Heading>
-      <Heading as="h2" fontSize="3xl">
-        A{" "}
-        <chakra.span
-          bgGradient="linear(
-            to right,
-            #f7b733,
-            #fc4a1a
-          )"
-          bgRepeat="no-repeat"
-          bgSize="100% 0.2em"
-          bgPos="0 88%"
-          transition="background-size 0.25s ease-in"
-          _hover={{ bgSize: "100% 88%" }}
-        >
-          data science enthusiast
-        </chakra.span>{" "}
-        &{" "}
-        <chakra.span
-          bgGradient="linear(to right, #36d1dc, #5b86e5)"
-          bgRepeat="no-repeat"
-          bgSize="100% 0.2em"
-          bgPos="0 88%"
-          transition="background-size 0.25s ease-in"
-          _hover={{ bgSize: "100% 88%" }}
-        >
-          web developer
+    <Stack spacing={6} alignItems="flex-start">
+      <Heading as="h1" fontSize="5xl">
+        Hi there! I&apos;m{" "}
+        <chakra.span color="blue.500" fontWeight="bold">
+          {home.name}
         </chakra.span>
-        .
       </Heading>
-      <Text fontSize="lg">
-        I love solving problems and learning new things everyday. In my spare
-        time, I write on my blog, reading tech articles, solving algorithm
-        problems, helping peoples solving programming problems in{" "}
-        <Link href="#" color="blue.500" textDecoration="underline">
-          Kotakode{" "}
-        </Link>
-        (Indonesia equivalent of stackoverflow) or hang out with my friends. My
-        mission is to help make the world a better place by solving real world
-        problems with programming.
-      </Text>
+
+      {home.about.split("\n\n").map((p, index) => {
+        return (
+          <Text key={index} fontSize="lg">
+            {parse(p)}
+          </Text>
+        );
+      })}
+
       <Button
         leftIcon={<DownloadIcon />}
         as="a"
@@ -92,7 +67,7 @@ const Home = ({ cv }) => (
           borderColor: "blue.500",
         }}
       >
-        Download CV
+        Download Resume
       </Button>
       <Stack direction="row" spacing={1}>
         {links.map((link, i) => (
@@ -116,10 +91,12 @@ const Home = ({ cv }) => (
 
 export const getStaticProps = async () => {
   const { cv } = await fetchAPI(`/portfolio-data`);
+  const home = await fetchAPI(`/home`);
 
   return {
     props: {
       cv,
+      home,
     },
     revalidate: 1,
   };
