@@ -1,6 +1,7 @@
 import {
   Button,
   ButtonGroup,
+  Divider,
   Flex,
   Heading,
   Image,
@@ -14,6 +15,7 @@ import { FaGithub } from "react-icons/fa";
 
 const Project = ({
   title,
+  techs,
   description,
   image,
   projectLink,
@@ -28,6 +30,11 @@ const Project = ({
         <Heading as="h3" fontSize="2xl">
           {title}
         </Heading>
+        <Divider />
+        <Text fontWeight="sm" fontStyle="italic">
+          Techs: {techs}
+        </Text>
+        <Divider />
         <Text>{description}</Text>
       </Stack>
 
