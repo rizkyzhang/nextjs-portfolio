@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import {
   Button,
+  Box,
   chakra,
   Heading,
   IconButton,
@@ -19,6 +20,8 @@ import {
 } from "react-icons/fa";
 import { SiCodewars } from "react-icons/si";
 
+import parse from "html-react-parser";
+
 import SEO from "../components/SEO";
 import { fetchAPI } from "../utils/api";
 
@@ -34,19 +37,21 @@ const links = [
 const Home = ({ cv, home }) => (
   <>
     <SEO title="Home" path="" />
-    <Stack spacing={8} alignItems="flex-start">
+    <Stack spacing={6} alignItems="flex-start">
       <Heading as="h1" fontSize="5xl">
-        Hi there! I&apos;m {home.name}
-      </Heading>
-      <Heading fontSize="3xl" color="blue.500">
-        {home.role}
+        Hi there! I&apos;m{" "}
+        <chakra.span color="blue.500" fontWeight="bold">
+          {home.name}
+        </chakra.span>
       </Heading>
 
-      <Text fontSize="lg">
-        {home.about.split("\n\n").map((p) => {
-          return <Text>{p}</Text>;
-        })}
-      </Text>
+      {home.about.split("\n\n").map((p, index) => {
+        return (
+          <Text key={index} fontSize="lg">
+            {parse(p)}
+          </Text>
+        );
+      })}
 
       <Button
         leftIcon={<DownloadIcon />}
@@ -62,7 +67,7 @@ const Home = ({ cv, home }) => (
           borderColor: "blue.500",
         }}
       >
-        Download CV
+        Download Resume
       </Button>
       <Stack direction="row" spacing={1}>
         {links.map((link, i) => (

@@ -1,6 +1,12 @@
 import React from "react";
-import { Flex, Link as ChakraLink } from "@chakra-ui/react";
+import { Box, Flex, Spacer, Link as ChakraLink } from "@chakra-ui/react";
 import NextLink from "next/link";
+
+const navLinks = [
+  ["Home", "/"],
+  ["Blog", "/blog"],
+  ["Projects", "/projects"],
+];
 
 const Navbar = () => (
   <Flex
@@ -9,31 +15,36 @@ const Navbar = () => (
     top={0}
     left={0}
     zIndex="sticky"
-    alignItems="center"
-    justifyContent={{ base: "space-around", md: "flex-end" }}
+    justifyContent="center"
     p={5}
     bg="#22252C"
   >
-    <NextLink href="/" passHref>
-      <ChakraLink mr={{ md: 5 }} _hover={{ color: "blue.500" }}>
-        {"{pH}"}
-      </ChakraLink>
-    </NextLink>
-    <NextLink href="/" passHref>
-      <ChakraLink mr={{ md: 5 }} _hover={{ color: "blue.500" }}>
-        Home
-      </ChakraLink>
-    </NextLink>
-    <NextLink href="/blog" passHref>
-      <ChakraLink mr={{ md: 5 }} _hover={{ color: "blue.500" }}>
-        Blog
-      </ChakraLink>
-    </NextLink>
-    <NextLink href="/projects" passHref>
-      <ChakraLink mr={{ md: 5 }} _hover={{ color: "blue.500" }}>
-        Projects
-      </ChakraLink>
-    </NextLink>
+    <Flex
+      w="5xl"
+      alignItems="center"
+      justifyContent={["space-around", "flex-end"]}
+    >
+      <NextLink href="/" passHref>
+        <ChakraLink
+          display={["none", "block"]}
+          mr="auto"
+          fontSize="2xl"
+          _hover={{ color: "blue.500" }}
+        >
+          {"{pH}"}
+        </ChakraLink>
+      </NextLink>
+
+      {navLinks.map((navLink, index) => {
+        return (
+          <NextLink key={index} href={navLink[1]} passHref>
+            <ChakraLink mr={5} _hover={{ color: "blue.500" }}>
+              {navLink[0]}
+            </ChakraLink>
+          </NextLink>
+        );
+      })}
+    </Flex>
   </Flex>
 );
 
