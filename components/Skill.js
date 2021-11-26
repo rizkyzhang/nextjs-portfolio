@@ -7,13 +7,13 @@ const Skill = ({ skills, title }) => {
         as="h3"
         w="max-content"
         mb={3}
-        bgGradient="linear(to right, #f7b733, #fc4a1a)"
+        bgGradient="linear(to right, #36d1dc, #5b86e5)"
         bgRepeat="no-repeat"
         bgSize="100% 0.2em"
         bgPos="0 88%"
         transition="background-size 0.25s ease-in"
-        fontSize="2xl"
         _hover={{ bgSize: "100% 88%" }}
+        fontSize="2xl"
       >
         {title}
       </Heading>
