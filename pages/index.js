@@ -34,18 +34,15 @@ const links = [
   ["https://www.hackerrank.com/rizkyzhangdev", <FaHackerrank />],
 ];
 
-const Home = ({ cv, home }) => (
+const Home = ({ resume, about }) => (
   <>
     <SEO title="Home" path="" />
     <Stack spacing={6} alignItems="flex-start">
       <Heading as="h1" fontSize="5xl">
-        Hi there! I&apos;m{" "}
-        <chakra.span color="blue.500" fontWeight="bold">
-          {home.name}
-        </chakra.span>
+        Hi, I&apos;m Rizky Zhang
       </Heading>
 
-      {home.about.split("\n\n").map((p, index) => {
+      {about.split("\n\n").map((p, index) => {
         return (
           <Text key={index} fontSize="lg">
             {parse(p)}
@@ -56,7 +53,7 @@ const Home = ({ cv, home }) => (
       <Button
         leftIcon={<DownloadIcon />}
         as="a"
-        href={cv}
+        href={resume}
         target="_blank"
         size="lg"
         bgColor="blue.500"
@@ -90,15 +87,14 @@ const Home = ({ cv, home }) => (
 );
 
 export const getStaticProps = async () => {
-  const { cv } = await fetchAPI(`/portfolio-data`);
-  const home = await fetchAPI(`/home`);
+  const portfolioRes = await fetchAPI("portfolio");
+  const { about, resume } = portfolioRes?.data?.attributes;
 
   return {
     props: {
-      cv,
-      home,
+      about,
+      resume,
     },
-    revalidate: 1,
   };
 };
 

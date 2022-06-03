@@ -2,6 +2,8 @@ import { Image, Stack, Text, Wrap, chakra } from "@chakra-ui/react";
 import { footerStyle, designedStyle, codedStyle } from "./style";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <Stack as="footer" {...footerStyle}>
       <Text>
@@ -16,12 +18,12 @@ const Footer = () => {
         />
         <Image
           src="https://img.shields.io/badge/strapi-%232E7EEA.svg?style=for-the-badge&logo=strapi&logoColor=white"
-          alt="Chakra UI logo"
+          alt="Strapi logo"
           display="inline-block"
         />
         <Image
           src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"
-          alt="Chakra UI logo"
+          alt="Vercel logo"
           display="inline-block"
         />
         <Image
@@ -30,7 +32,7 @@ const Footer = () => {
           display="inline-block"
         />
       </Wrap>
-      <Text>2021 &copy; programmerHood</Text>
+      <Text>{year} &copy; programmerHood</Text>
     </Stack>
   );
 };

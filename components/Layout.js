@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       color="white"
     >
       <Navbar></Navbar>
-      <Container maxW="container.lg" px={5} py={10}>
+      <Container maxW="800px" px={5} py={10}>
         {children}
         <ScrollToTop />
       </Container>

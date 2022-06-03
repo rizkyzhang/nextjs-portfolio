@@ -10,16 +10,16 @@ import { fetchAPI } from "../../utils/api";
 import style from "../../styles/markdown-styles.module.css";
 
 export default function Article({ article }) {
-  const { title, body, slug, published_at, updated_at } = article;
+  const { title, content, slug, publishedAt, updatedAt } = article;
 
   return (
     <>
       <SEO
         title={title}
-        description={body.slice(0, 150) + "..."}
+        description={content.slice(0, 150) + "..."}
         path={`blog/${slug}`}
-        publishedAt={published_at}
-        updatedAt={updated_at}
+        publishedAt={publishedAt}
+        updatedAt={updatedAt}
         isArticle
       />
       <Heading as="h1">{title}</Heading>
@@ -27,7 +27,7 @@ export default function Article({ article }) {
         className={style.reactMarkdown}
         components={markdownComponents}
       >
-        {body}
+        {content}
       </ReactMarkdown>
       <Comments issueTerm={slug} />
     </>
@@ -36,19 +36,20 @@ export default function Article({ article }) {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const data = await fetchAPI(`/articles?slug=${slug}`);
-  const article = data[0];
+  const data = await fetchAPI(`slugify/slugs/article/${slug}`);
+  const article = data?.data?.attributes;
 
   return {
     props: { article },
-    revalidate: 1,
   };
 };
-export async function getStaticPaths() {
-  const articles = await fetchAPI(`/articles`);
 
-  const paths = articles.map(({ slug }) => ({
-    params: { slug },
+export async function getStaticPaths() {
+  const articlesRes = await fetchAPI("articles");
+  const articles = articlesRes?.data;
+
+  const paths = articles.map((article) => ({
+    params: { slug: article?.attributes?.slug },
   }));
 
   return { paths, fallback: false };
