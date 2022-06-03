@@ -19,18 +19,13 @@ const Blog = ({ articles }) => {
       <SEO title="Blog" path="blog" />
       <Stack>
         <Heading as="h2" color="blue.500">
-          2021
+          2022
         </Heading>
-        <Divider border="2px solid gray"></Divider>
+        <Divider border="1px solid gray"></Divider>
         <Stack pt={3}>
-          {articles.map(({ id, title, slug, published_at }) => {
-            const publishedAt = new Date(published_at).toLocaleDateString(
-              "en-US",
-              {
-                day: "numeric",
-                month: "short",
-              }
-            );
+          {articles.map((article) => {
+            const { id, attributes } = article;
+            const { title, slug, updatedAt } = attributes;
 
             return (
               <Flex
@@ -45,7 +40,10 @@ const Blog = ({ articles }) => {
                 </NextLink>
                 <Spacer></Spacer>
                 <Text fontSize="sm" color="gray.500">
-                  {publishedAt}
+                  {new Date(updatedAt).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "short",
+                  })}
                 </Text>
               </Flex>
             );
@@ -55,16 +53,20 @@ const Blog = ({ articles }) => {
     </>
   );
 };
+
 export const getStaticProps = async () => {
-  const articles = await fetchAPI(`/articles`);
+  const articlesRes = await fetchAPI(`articles`);
+  const articles = articlesRes?.data;
 
   return {
     props: {
-      articles: articles.sort(
-        (a, b) => new Date(b.published_at) - new Date(a.published_at)
+      articles: articles?.sort(
+        (a, b) =>
+          new Date(b?.attributes?.updatedAt) -
+          new Date(a?.attributes?.updatedAt)
       ),
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 

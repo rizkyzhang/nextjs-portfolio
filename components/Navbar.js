@@ -20,7 +20,7 @@ const Navbar = () => (
     bg="#22252C"
   >
     <Flex
-      w="5xl"
+      w="800px"
       alignItems="center"
       justifyContent={["space-around", "flex-end"]}
     >
