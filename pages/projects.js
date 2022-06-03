@@ -1,5 +1,5 @@
-/* eslint-disable react/jsx-key */
-import { Box, Heading, SimpleGrid, Stack } from "@chakra-ui/react";
+import React from "react";
+import { Box, Heading, Stack } from "@chakra-ui/react";
 
 import Skill from "../components/Skill";
 import Project from "../components/Project";
@@ -25,24 +25,29 @@ const Projects = ({ projects, skill }) => (
       <Heading mb={7} fontSize="3xl">
         Projects
       </Heading>
-      <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>
-        {projects.map((project, i) => (
-          <Project {...project} i={i} />
+      {/* <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}> */}
+      <Stack spacing={5}>
+        {projects.map((project, id) => (
+          <React.Fragment key={id}>
+            <Project {...project} i={id} />
+          </React.Fragment>
         ))}
-      </SimpleGrid>
+      </Stack>
+      {/* </SimpleGrid> */}
     </Box>
   </>
 );
 
 export const getStaticProps = async () => {
-  const { projects, skill } = await fetchAPI(`/portfolio-data`);
+  const portfolioRes = await fetchAPI("portfolio");
+  const { projects, skill } = portfolioRes?.data?.attributes;
 
   return {
     props: {
       projects,
       skill,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 

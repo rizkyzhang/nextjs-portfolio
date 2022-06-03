@@ -1,4 +1,5 @@
 import {
+  Code,
   Heading,
   Image,
   Link,
@@ -9,9 +10,13 @@ import {
 } from "@chakra-ui/react";
 
 const markdownComponents = {
-  h2: ({ children }) => <Heading size="lg">{children}</Heading>,
+  h2: ({ children }) => (
+    <Heading my={5} size="lg">
+      {children}
+    </Heading>
+  ),
   h3: ({ children }) => (
-    <Heading as="h3" size="md">
+    <Heading as="h3" my={5} size="md">
       {children}
     </Heading>
   ),
@@ -25,6 +30,7 @@ const markdownComponents = {
   ul: ({ children }) => <UnorderedList p={5}>{children}</UnorderedList>,
   li: ({ children }) => <ListItem>{children}</ListItem>,
   img: ({ src, alt }) => <Image src={src} alt={alt} />,
+  code: ({ children }) => <Code px={3}>{children}</Code>,
 };
 
 export default markdownComponents;
