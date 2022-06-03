@@ -66,6 +66,7 @@ export const getStaticProps = async () => {
           new Date(a?.attributes?.updatedAt)
       ),
     },
+    revalidate: 60,
   };
 };
 

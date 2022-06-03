@@ -95,6 +95,7 @@ export const getStaticProps = async () => {
       about,
       resume,
     },
+    revalidate: 60,
   };
 };
 
