@@ -1,14 +1,5 @@
 /* eslint-disable react/jsx-key */
-import {
-  Button,
-  Box,
-  chakra,
-  Heading,
-  IconButton,
-  Link,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Heading, IconButton, Stack, Text } from "@chakra-ui/react";
 
 import { DownloadIcon } from "@chakra-ui/icons";
 import {
@@ -28,7 +19,6 @@ import { fetchAPI } from "../utils/api";
 const links = [
   ["https://www.linkedin.com/in/rizkyzhang/", <FaLinkedin />],
   ["https://t.me/rizkyzhang", <FaTelegram />],
-  ["https://wa.me/+6281250555676", <FaWhatsapp />],
   ["https://github.com/rizkyzhang", <FaGithub />],
   ["https://www.codewars.com/users/rizkyzhang", <SiCodewars />],
   ["https://www.hackerrank.com/rizkyzhangdev", <FaHackerrank />],
